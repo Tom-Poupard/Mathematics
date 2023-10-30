@@ -1,0 +1,41 @@
+#BISECTION METHOD
+import matplotlib.pyplot as plt
+import numpy as np
+
+def bisection(f, a, b, epsilon):
+    try:# try-except allows us to intercept an exception if there is one
+        if f(a)*f(b) > 0:  #We need f(a) & f(b) to have opposite signs so f(a)*f(b) must be negative
+            raise Exception("Change a or b") #'raise' interrupts the program. Expection is a built-in Python class for all exceptions. 
+        else:
+            m = (a + b)/2
+            while abs(b - a) > epsilon:
+                if f(m) == 0:
+                    return m
+                elif f(a)*f(m) > 0:
+                    a = m
+                else:
+                    b = m
+                m = (a + b)/2
+            return m #approximate solution of the bisection method : f(m) is almost equal to 0
+    except: #except is used when the "try" bloc intercepts an exception 
+        print("Mauvais choix de l'encadrement")
+        return 0
+    
+def f(x):
+    return 3**x + 2*x - 3 #We can chose the polynomial function we want
+
+
+#We display the result with 3 arbitrary parameters (0,1,0.001)
+print(dichotomie(f, 0, 1, 0.001))
+
+
+x = np.linspace(-4, 4, 100) #array of 100 numbers starting from -4 to 4
+
+plt.plot(x, f(x), color = "red")
+plt.axhline(y=0, color="black")
+plt.axvline(x=0, color="black")
+plt.grid(True) 
+plt.xlabel("x")
+plt.ylabel("f(x)")
+plt.title("f(x) curve")
+plt.show()

@@ -19,7 +19,7 @@ def bisection(f, a, b, epsilon):
                 m = (a + b)/2
             return m #approximate solution of the bisection method : f(m) is almost equal to 0
     except: #except is used when the "try" bloc intercepts an exception 
-        print("Mauvais choix de l'encadrement")
+        print("Wrong Framework")
         return 0
     
 def f(x):

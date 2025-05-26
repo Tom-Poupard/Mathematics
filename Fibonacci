@@ -6,7 +6,7 @@ def fibonacci(n):
     else:
         return (fibonacci(n-1) + fibonacci(n-2))
 
-#We display every number in the Fibonacci sequence up to the nth one.
+
 print(f'Fibonacci numbers up to the {n}th one :')
 for i in range(n): #range(n) = range(0,n)
     print(fibonacci(i))

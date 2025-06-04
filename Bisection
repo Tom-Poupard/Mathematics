@@ -5,8 +5,8 @@ import numpy as np
 
 def bisection(f, a, b, epsilon):
     try:
-        if f(a)*f(b) > 0:  #We need f(a) & f(b) to have opposite signs so f(a)*f(b) must be negative
-            raise Exception("Change a or b") #'raise' interrupts the program. Expection is a built-in Python class for all exceptions. 
+        if f(a)*f(b) > 0: 
+            raise Exception("Change a or b")
         else:
             m = (a + b)/2
             while abs(b - a) > epsilon:

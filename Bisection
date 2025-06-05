@@ -23,12 +23,10 @@ def bisection(f, a, b, epsilon):
         return 0
     
 def f(x):
-    return 3**x + 2*x - 3 #Chose the polynomial function 
-
+    return 3*(x**2) + 2*x - 3 #Chose the polynomial function 
 
 #We display the result with 3 arbitrary parameters (0,1,0.001)
 print(bisection(f, 0, 1, 0.001))
-
 
 x = np.linspace(-4, 4, 100) #array of 100 numbers starting from -4 to 4
 

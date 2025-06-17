@@ -1,0 +1,38 @@
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy.stats import binom
+
+n = int(input("Enter the number of trials (n): "))
+p = float(input("Enter the probability of success (p): "))
+k = int(input("Enter the value k to estimate P(X = k): "))
+
+if k < 0 or k > n:
+    raise ValueError("k must be between 0 and n.")
+if p < 0 or p > 1:
+    raise ValueError("p must be between 0 and 1.")
+
+# binomial distribution by simulations
+def estimate_binomial_distribution(n, p, repetitions=10000):
+    draws = np.random.binomial(n, p, size=repetitions)
+    freqs = np.array([np.sum(draws == i) / repetitions for i in range(n + 1)])
+    return freqs
+
+k_values = np.arange(n + 1)
+exact_prob = binom.pmf(k_values, n, p)
+simulated_prob = estimate_binomial_distribution(n, p)
+
+print("\n--- Results for chosen k ---")
+print(f"Exact value    : P(X = {k}) = {binom.pmf(k, n, p):.4f}")
+print(f"Simulation est.: P(X = {k}) ≈ {simulated_prob[k]:.4f}")
+
+plt.figure(figsize=(10, 6))
+plt.bar(k_values - 0.2, exact_prob, width=0.4, label='Exact', color='lightgreen', edgecolor='black')
+plt.bar(k_values + 0.2, simulated_prob, width=0.4, label='Simulation', color='skyblue', edgecolor='black')
+plt.xlabel("Value of k")
+plt.ylabel("P(X = k)")
+plt.title(f"Binomial Distribution B({n}, {p}): theory vs simulation")
+plt.xticks(k_values)
+plt.legend()
+plt.grid(axis='y', linestyle='--', alpha=0.7)
+plt.tight_layout()
+plt.show()

@@ -1,1 +1,15 @@
 #Display the first N first prime number
+
+try:
+  N = int(input("Enter the number up to which you want to find prime numbers: "))
+except:
+  print("Please enter an integer (A prime number is found in N*")
+
+for i in range(1, N+1):
+  for j in range(2, i):
+    if i%j = 0:
+      print("{i} is not a prime number")
+    else:
+      print("{i} is a prime number")
+  Next j
+Next i

@@ -3,19 +3,19 @@
 
 #Display the N first prime numbers
 try:
-    N = int(input("How many prime numbers do you want ? : "))
+  N = int(input("How many prime numbers do you want: "))
 except ValueError:
-    print("Enter an integer")
+  print("Enter an integer")
 else:
   count = 0
   num = 2
   while count < N:
-    is_prime = True
-    for j in range(2, int(num**0.5) + 1):
-      if num % j == 0:
-        is_prime = False
-        break
+      is_prime = True
+      for j in range(2, int(num**0.5) + 1):
+          if num % j == 0:
+              is_prime = False
+              break
       if is_prime:
-        print(num)
-        count += 1
+          print(num)
+          count += 1
       num += 1

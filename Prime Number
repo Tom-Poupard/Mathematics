@@ -1,16 +1,21 @@
-#Display the first N first prime number
+# 2 codes on prime numbers
 
+
+#Display the N first prime numbers
 try:
-  N = int(input("Enter the number up to which you want to find prime numbers: "))
+    N = int(input("How many prime numbers do you want ? : "))
 except ValueError:
-  print("Please enter an integer (A prime number is found in N*)")
+    print("Enter an integer")
 else:
-  for i in range(2, N + 1):
+  count = 0
+  num = 2
+  while count < N:
     is_prime = True
-      for j in range(2, int(i**0.5) + 1): 
-        if i % j == 0:
-          is_prime = False
-          break
-        if is_prime:
-          print(i)
-
+    for j in range(2, int(num**0.5) + 1):
+      if num % j == 0:
+        is_prime = False
+        break
+      if is_prime:
+        print(num)
+        count += 1
+      num += 1
